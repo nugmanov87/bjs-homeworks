@@ -20,7 +20,7 @@ function getResult(a, b, c) {
     let x1 = (-b - Math.sqrt(discriminant)) / (2 * a);
     let x2 = (-b + Math.sqrt(discriminant)) / (2 * a);
     return [x1, x2];
-  }
+  } 
 }
 
 function calculateAverageRating() {
@@ -40,7 +40,7 @@ function getAverageMark(marks) {
   for (let i = 0; i < marks.length; i++) {
     sum = sum + parseInt(marks[i]);
   }
-  return `Средний бал составляет: ${sum / marks.length}`;
+  return sum / marks.length;
 }
 
 function calculateDrinkTask() {
@@ -52,11 +52,10 @@ function calculateDrinkTask() {
 
 function askDrink(name, dateOfBirthday) {
   let year = new Date().getFullYear();
-  if (year > 18) {
+  if (year - dateOfBirthday > 18) {
     return `Не желаете ли олд-фэшн, ${name}?`;
  } else  {
     return `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
- }   
-  
+ } 
 }
 
