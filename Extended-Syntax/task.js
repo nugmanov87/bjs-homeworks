@@ -14,13 +14,13 @@ function getResult(a, b, c) {
   if (discriminant < 0) {
     return [];
   } else if (discriminant == 0) {
-    let x = -b / 2 * a;
+    let x = (-b / 2) * a;
     return [x];
   } else if (discriminant > 0) {
     let x1 = (-b - Math.sqrt(discriminant)) / (2 * a);
     let x2 = (-b + Math.sqrt(discriminant)) / (2 * a);
     return [x1, x2];
-  } 
+  }
 }
 
 function calculateAverageRating() {
@@ -52,10 +52,10 @@ function calculateDrinkTask() {
 
 function askDrink(name, dateOfBirthday) {
   let year = new Date().getFullYear();
-  if (year - dateOfBirthday > 18) {
+  let date = dateOfBirthday.getFullYear();
+  if (year - date > 18) {
     return `Не желаете ли олд-фэшн, ${name}?`;
- } else  {
+  } else {
     return `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
- } 
+  }
 }
-
