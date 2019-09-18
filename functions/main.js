@@ -81,20 +81,32 @@ console.log(getAverageMark({
 
 // 3 задание
 function getPersonData(secretData) {
-  let person = {
-    firstName: "Эмильо",
-    lastName: "Родриго"
-  };
+  let name = getPirateName(secretData);
+  let pirate = {};
+  
+  if (name[0] === 0) {
+    pirate.firstName = "Родриго";
+  } else if (name[0] === 1) {
+    pirate.firstName = "Эмильо";
+  }
+
+  if (name[1] === 0) {
+    pirate.lastName = "Родриго";
+  } else if (name[1] === 1) {
+    pirate.lastName = "Эмильо";
+  }
+
+  return pirate;
+}
+
+function getPirateName(secretData) {
+  let person = [];
+  for (let prop in secretData) {
+    person.push(secretData[prop]);
+  }  
   return person;
 }
 
-function pirates(number) {
-  let aaa = (person.firstName = 1);
-  let bbb = (person.lastName = 0);
-  return {
-    aaa,
-    bbb
-  };
-}
-
-console.log(getPersonData({ aaa: 1, bbb: 1 }));
+console.log(getPersonData({
+  aaa: 0, bbb: 1
+}));
