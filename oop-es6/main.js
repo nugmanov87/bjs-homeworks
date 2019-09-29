@@ -214,3 +214,64 @@ console.log(bliz.durability);  // 0
 console.log(bliz.getDamage()); // 10
 
 console.log(bliz.isBroken()); // true
+
+
+//Задание 3
+
+class StudentLog {
+	constructor(name) {
+		this.name = name;
+		this.grades = {};
+	}
+
+	getName() {
+		return this.name;
+	}
+
+	addGrade(grade, subject) {
+		if(Number.isInteger(grade) && grade > 0 && grade < 6){
+			if(typeof this.grades[subject] === 'undefined') {
+				this.grades[subject] = [grade];
+			} else {
+				this.grades[subject].push(grade);
+			}
+		} else {
+			let result = `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5`;
+			if(typeof this.grades[subject] === 'undefined') {
+				result += '\n0';
+			} else {
+				result += '\n' + this.grades[subject].length;
+			}
+			return result;
+		}
+
+		if(typeof this.grades[subject] === 'undefined') {
+			return 0;
+		} else {
+			return this.grades[subject].length;
+		}
+	}
+
+	getAverageBySubject(subject) {
+		if(typeof this.grades[subject] === 'undefined'){
+			return 0;
+		} else {
+			let sum = 0;
+		    for(let mark of this.grades[subject]) {
+		    	sum += Number(mark);
+		    }
+		    let avg = sum / this.grades[subject].length;
+
+		    return avg;
+		}
+	}
+
+	getTotalAverage() {
+		let sum = 0;
+		for(let grade in this.grades) {
+			sum += Number(this.getAverageBySubject(grade));
+		}
+		let avg = sum / Object.keys(this.grades).length;
+		return avg;
+	}
+}
